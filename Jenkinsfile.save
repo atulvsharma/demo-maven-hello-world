@@ -32,21 +32,15 @@ pipeline {
 
      stage ('SonarQube Analysis') {
         steps {
-              withSonarQubeEnv('sonar') {
+              withSonarQubeEnv('Sonar') {
 
                   sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"               
-		  sh "mvn clean verify sonar:sonar \
-			-Dsonar.projectKey=jb-hello-world-maven \
-			-Dsonar.projectName='jb-hello-world-maven' \
-			-Dsonar.host.url=http://172.26.252.31:9000 \
-			-Dsonar.token=sqp_6397ce008a11ea10a24bf557e946894140a63990"
+                  sh "mvn sonar:sonar -Dsonar.login=${sqp_142c876eb31b8c9f98e3c7697e9391b936c9a064
 
 
 
 
-
-
-                  sh "mvn sonar:sonar -Dsonar.login=${sonar}"
+}"
                  }
             }
       }
