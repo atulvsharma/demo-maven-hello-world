@@ -1,37 +1,37 @@
 pipeline {
   agent any
   tools {
-  
+
   maven 'maven'
-   
+
   }
     stages {
 
       stage ('Checkout SCM'){
         steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-credentials', url: 'https://github.com/atulvsharma/demo-maven-hello-world.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githu>
         }
       }
-	  
-	  stage ('Build')  {
-	      steps {
-          
+
+          stage ('Build')  {
+              steps {
+
             dir('jenkins-data/devops-project/demo-maven-hello-world/'){
             sh pwd
-			sh "mvn package"
+                        sh "mvn package"
           }
         }
-         
+
       }
-   
+
      stage ('SonarQube Analysis') {
         steps {
               withSonarQubeEnv('sonar') {
-                
-				dir('jenkins-data/devops-project/demo-maven-hello-world/'){
+
+                                dir('jenkins-data/devops-project/demo-maven-hello-world/'){
                  sh 'mvn -U clean install sonar:sonar'
                 }
-				
+
               }
             }
       }
@@ -81,21 +81,20 @@ pipeline {
     }
 
     stage('Build Container Image') {
-            
-            steps {
-				  dir('jenkins-data/devops-project/demo-maven-hello-world/'){ 
-                  sh "sudo ansible-playbook create-container-image.yaml"
-                   }     
-                    }
-                }
-            
-        } 
-    stage('Waiting for Approvals') {
-            
-        steps{
 
-				input('Test Completed ? Please provide  Approvals for Prod Release ?')
-			  }
-            
-    }     
-} 
+            steps {
+                                  dir('jenkins-data/devops-project/demo-maven-hello-world/'){
+                  sh "sudo ansible-playbook create-container-image.yaml"
+            }
+        }
+    }
+   
+    stage('Waiting for Approvals') {
+
+        steps{
+             input('Test Completed ? Please provide  Approvals for Prod Release ?')
+             }
+
+		}
+	}
+}
