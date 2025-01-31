@@ -24,6 +24,7 @@ pipeline {
 					sh 'pwd'
 					sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"
 					sh "ls -l"
+                                        sh "mvn --version"
 					sh "mvn package"
 					}
 
