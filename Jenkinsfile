@@ -40,13 +40,6 @@ pipeline {
 			-Dsonar.projectName='jb-hello-world-maven' \
 			-Dsonar.host.url=http://172.26.252.31:9000 \
 			-Dsonar.token=sqp_6397ce008a11ea10a24bf557e946894140a63990"
-
-
-
-
-
-
-                  sh "mvn sonar:sonar -Dsonar.login=${sonar}"
                  }
             }
       }
