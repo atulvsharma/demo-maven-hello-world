@@ -34,11 +34,9 @@ pipeline {
         steps {
               withSonarQubeEnv('sonar') {
 
-                                dir('jenkins-data/devops-project/demo-maven-hello-world/'){
-                 sh 'mvn -U clean install sonar:sonar'
-                }
-
-              }
+                  sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"               
+                  sh 'mvn -U clean install sonar:sonar'
+                 }
             }
       }
 
