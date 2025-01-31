@@ -15,12 +15,10 @@ pipeline {
 
           stage ('Build')  {
               steps {
-
-            dir('jenkins-data/devops-project/demo-maven-hello-world/'){
-            sh pwd
-                        sh "mvn package"
-          }
-        }
+					sh pwd
+					sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"
+					sh "mvn package"
+					}
 
       }
 
