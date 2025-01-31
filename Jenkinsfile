@@ -32,7 +32,7 @@ pipeline {
 
      stage ('SonarQube Analysis') {
         steps {
-              withSonarQubeEnv('sonar') {
+              withSonarQubeEnv('admin') {
 
                   sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"               
                   sh 'mvn -U clean install sonar:sonar'
