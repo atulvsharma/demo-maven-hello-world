@@ -21,7 +21,7 @@ pipeline {
 
           stage ('Build')  {
               steps {
-					sh pwd
+					sh 'pwd'
 					sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"
 					sh "mvn package"
 					}
