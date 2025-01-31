@@ -91,7 +91,7 @@ pipeline {
     stage('Build Container Image') {
 
             steps {
-                  dir('jenkins-data/devops-project/demo-maven-hello-world/'){
+                  dir('jenkins-data/devops-project/ansible-related/'){
                   sh "ansible-playbook create-container-image.yaml"
             }
         }
