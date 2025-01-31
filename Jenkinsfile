@@ -13,6 +13,12 @@ pipeline {
         }
       }
 
+	  stage ('Just Testing'){
+				steps{
+					sh 'echo "Here I am"'
+				     }
+				}
+
           stage ('Build')  {
               steps {
 					sh pwd
