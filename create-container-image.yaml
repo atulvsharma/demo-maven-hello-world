@@ -4,9 +4,6 @@
 - hosts: localhost
   tasks:
 
-  - name: Run a privileged task
-      ansible.builtin.command: whoami
-
   - name: Pull .jar artifact from Artifactory
     ansible.builtin.get_url:
       url: http://172.26.252.31:8082/artifactory/libs-release-local/org/springframework/jb-hello-world-maven/0.2.0/jb-hello-world-maven-0.2.0.jar
