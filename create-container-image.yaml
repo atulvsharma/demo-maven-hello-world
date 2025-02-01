@@ -23,8 +23,8 @@
 #Artifcat should be in the same folder where Dcokerfile is available 
   - name: Rename .jar Artifact
     command:
-      mv /home/jenkinsadmin/jenkins-data/devops-project/ansible-related/artifacts/jb-hello-world-maven-0.2.0.jar
-      /home/jenkinsadmin/jenkins-data/devops-project/ansible-related/dockercode/helloworld.jar
+      mv /var/jenkins_home/workspace/helloworld-maven/jb-hello-world-maven-0.2.0.jar
+      /var/jenkins_home/workspace/helloworld-maven/helloworld.jar
 
   - name: Log into DockerHub
     docker_login:
@@ -40,7 +40,7 @@
     docker_image:
       name: helloworld
       build:
-        path: ./dockercode
+        path: .
         pull: no
         args:
           listen_port: 8084
