@@ -93,7 +93,7 @@ pipeline {
             steps {
 		   sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"
                    sh "ls -l"
-                   sh "sudo ansible-playbook create-container-image.yaml"
+                   sh "ansible-playbook create-container-image.yaml"
         }
     }
    
