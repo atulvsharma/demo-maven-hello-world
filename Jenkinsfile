@@ -93,7 +93,9 @@ pipeline {
             steps {
 		   sh "cd ./jenkins-data/devops-project/demo-maven-hello-world"
                    sh "ls -l"
-                   sh "sudo ansible-playbook create-container-image.yaml -S"
+		   withCredentials([string(credentialsId: 'sudo-password', variable: 'SUDO_PASS')]) {
+                   sh "echo ${SUDO_PASS} | sudo -S ansible-playbook create-container-image.yaml"
+                }
         }
     }
    
