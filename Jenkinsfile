@@ -96,6 +96,23 @@ pipeline {
 		   sh "sudo -n  ansible-playbook create-container-image.yaml"
 	          }
             }
+
+    stage('Deploy to AWS EC2') {
+            steps {
+                sshagent(['ad53457a-e545-46cd-9085-2634158d0f4c']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ubuntu@18.206.125.73 <<EOF
+                    sudo docker pull atulvsharma/helloworld:latest
+                    sudo docker stop helloworld-container || true
+                    sudo docker rm helloworld-container || true
+                    sudo docker run -d -p 80:80 --name hellowrold-container atulvsharma/helloworld:latest
+                    EOF
+                    '''
+                }
+            }
+        }
+
+
    
 	}
 }
