@@ -101,7 +101,7 @@ pipeline {
             steps {
                 sshagent(['ad53457a-e545-46cd-9085-2634158d0f4c']) {
                     sh '''
-                    ssh /home/jenkinsadmin/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@18.206.125.73 <<EOF
+                    ssh -i /home/jenkinsadmin/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@18.206.125.73 <<EOF
                     sudo docker pull atulvsharma/helloworld:1.0
                     sudo docker stop helloworld-container || true
                     sudo docker rm helloworld-container || true
