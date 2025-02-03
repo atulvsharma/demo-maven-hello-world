@@ -103,11 +103,13 @@ pipeline {
                     sh '''
                     ssh -i /home/jenkinsadmin/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@18.206.125.73 << 'EOF'
                     sudo docker pull atulvsharma/helloworld:1.0
+
                     if sudo docker ps -a --format '{{.Names}}' | grep -q 'helloworld-container'; then
-                       sudo docker stop helloworld-container || true
-                       sudo docker rm helloworld-container || true
-		    fi
-                    sudo docker run -d -p 80:80 --name hellowrold-container atulvsharma/helloworld:1.0
+                        sudo docker stop helloworld-container || true
+                        sudo docker rm helloworld-container || true
+                    fi
+
+                    sudo docker run -d -p 80:80 --name helloworld-container atulvsharma/helloworld:1.0
                     EOF
                     '''
                 }
