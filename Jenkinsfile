@@ -107,7 +107,7 @@ pipeline {
                        sudo docker stop helloworld-container || true
                        sudo docker rm helloworld-container || true
 		    fi
-                    sudo docker run -d -p 80:80 --name hellowrold-container atulvsharma/helloworld:latest
+                    sudo docker run -d -p 80:80 --name hellowrold-container atulvsharma/helloworld:1.0
                     EOF
                     '''
                 }
