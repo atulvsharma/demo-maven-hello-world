@@ -116,7 +116,11 @@ EOF
             }
         }
 
-
-   
+     post{
+	  always{
+		cleanWs()
+		}
 	}
+	   
+     }
 }
